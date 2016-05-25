@@ -21,10 +21,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.cisco.integrations.bean.BitbucketDetails;
 import com.cisco.integrations.bean.BitbucketDetailsPojo;
 import com.cisco.integrations.bean.Repos;
 import com.cisco.integrations.bean.Rooms;
@@ -71,20 +73,30 @@ public class CiscoMuleProjectController {
 				}
 			}catch(Exception e){e.printStackTrace();logger.error(e.getMessage(),e);}
 		
-		model.addAttribute("accessToken",accessToken);
+		model.addAttribute("accessToken",accessToken);		
 		
-		
-		/*session.getAttribute("integrationId");
-		System.out.println("Got IntegrsationId from request parameter!");
-		model.addAttribute("code",request.getParameter("code"));
+		model.addAttribute("integrationId", request.getAttribute("integrationId"));
+		return "accessToken";
+	}
+	
+	
+	@RequestMapping(value="/bitbucket/page")
+	public String bitbucketPage(Model model, HttpServletRequest request){
+		//HttpSession session = request.getSession();
+		//session.getAttribute("integrationId");
+		//System.out.println("Got IntegrsationId from request parameter!");
+		//model.addAttribute("code",request.getParameter("code"));
 				
 		
-		String bitbucketAccessToken;
-		String sparkAccessToken= "YzRiNGFkNzctYjNjYi00Y2E3LTlhNTMtZjAzZTVlNDhmNDJkZDEzN2ViMjUtMThi";
+		//String bitbucketAccessToken;
+		//String sparkAccessToken= "YzRiNGFkNzctYjNjYi00Y2E3LTlhNTMtZjAzZTVlNDhmNDJkZDEzN2ViMjUtMThi";
 		String bitbucketDetailsResponse = "{\"rooms\": [{\"id\": \"101\",\"title\": \"title1\"}, {\"id\": \"102\",\"title\": \"title2\"	}],\"repos\": [{		\"id\": \"repo101\",\"name\": \"reponame\"	}, {\"id\": \"repo102\",\"name\":\"reponame\"}],\"tokendetails\": {\"detail1\": \"detail1\",	\"detail2\": \"detail2\"	}}";
 		JSONObject json = new JSONObject(bitbucketDetailsResponse);
-		Gson gson = new Gson();*/
-		/*BitbucketDetailsPojo bitbucketDetails = gson.fromJson(json.toString(), BitbucketDetailsPojo.class);
+		Gson gson = new Gson();
+		BitbucketDetails details = new BitbucketDetails();
+		
+		model.addAttribute("details",details);
+		BitbucketDetailsPojo bitbucketDetails = gson.fromJson(json.toString(), BitbucketDetailsPojo.class);
 		//Map<String, Map<String, String>> referenceData = new HashMap();
 		Map<String, String> roomsMap = new LinkedHashMap<String,String>();
 		
@@ -103,23 +115,17 @@ public class CiscoMuleProjectController {
 
 		model.addAttribute("roomsList",roomsMap);
 		model.addAttribute("reposList",reposMap);
-		model.addAttribute("rooms",rooms);
-		model.addAttribute("repos",repos);
-		
 		//getRooms(request);
-		*/
-		//model.addAttribute("bitbucketDetailsResponse", bitbucketDetailsResponse);
 		
-		model.addAttribute("integrationId", request.getAttribute("integrationId"));
-		return "accessToken";
+		model.addAttribute("bitbucketDetailsResponse", bitbucketDetailsResponse);
+		return "bitbucketDetails";
 	}
 	
 	
-	
 	@RequestMapping(value={"/bitbucket/formprocess"}, method = RequestMethod.POST)
-	public String bitbucketFormProcess(HttpServletRequest request,BindingResult result, Model model){
+	public String bitbucketFormProcess(@Validated @ModelAttribute BitbucketDetails details, BindingResult result){
 		
-		model.addAttribute("success", "sucess");
+		//model.addAttribute("success", "sucess");
 		
 		return "bitbucketIntegrationSucess";
 	}

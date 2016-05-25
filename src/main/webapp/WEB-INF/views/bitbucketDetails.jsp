@@ -11,19 +11,20 @@
 </head>
 <body>
 
-<form:form method="POST" commandName="processForm">
+<form:form method="POST" commandName="details" action="formprocess">
 Rooms : 
-<form:select path="rooms">
+<form:select path="room">
    <form:option value="NONE" label="--- Select ---"/>
    <form:options items="${roomsList}" />
 </form:select>
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Repository :
-<form:select path="repos">
+<form:select path="repo">
    <form:option value="NONE" label="--- Select ---"/>
    <form:options items="${reposList}" />
 </form:select>
-<form:button ></form:button>
+<br/><br/>
+<input type="submit" value="Integrate"/>
 </form:form>
 </body>
 </html>

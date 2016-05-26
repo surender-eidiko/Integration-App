@@ -26,10 +26,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cisco.integrations.bean.BitbucketDetails;
-import com.cisco.integrations.bean.BitbucketDetailsPojo;
-import com.cisco.integrations.bean.Repos;
-import com.cisco.integrations.bean.Rooms;
+import com.cisco.integrations.model.BitbucketBean;
+import com.cisco.integrations.model.BitbucketJSONBean;
+import com.cisco.integrations.model.Repos;
+import com.cisco.integrations.model.Rooms;
 import com.cisco.integrations.service.CiscoMuleService;
 import com.google.gson.Gson;
 
@@ -93,21 +93,21 @@ public class CiscoMuleProjectController {
 		String bitbucketDetailsResponse = "{\"rooms\": [{\"id\": \"101\",\"title\": \"title1\"}, {\"id\": \"102\",\"title\": \"title2\"	}],\"repos\": [{		\"id\": \"repo101\",\"name\": \"reponame\"	}, {\"id\": \"repo102\",\"name\":\"reponame\"}],\"tokendetails\": {\"detail1\": \"detail1\",	\"detail2\": \"detail2\"	}}";
 		JSONObject json = new JSONObject(bitbucketDetailsResponse);
 		Gson gson = new Gson();
-		BitbucketDetails details = new BitbucketDetails();
+		BitbucketBean details = new BitbucketBean();
 		
 		model.addAttribute("details",details);
-		BitbucketDetailsPojo bitbucketDetails = gson.fromJson(json.toString(), BitbucketDetailsPojo.class);
+		BitbucketJSONBean bitbucketJsonBean = gson.fromJson(json.toString(), BitbucketJSONBean.class);
 		//Map<String, Map<String, String>> referenceData = new HashMap();
 		Map<String, String> roomsMap = new LinkedHashMap<String,String>();
 		
 		Map<String, String> reposMap = new LinkedHashMap<String, String>();
 		
-		Rooms[] rooms =bitbucketDetails.getRooms();
+		Rooms[] rooms =bitbucketJsonBean.getRooms();
 		for(Rooms r : rooms){
 			roomsMap.put(r.getId(), r.getTitle());
 		}
 		logger.info("Repos...");
-		Repos[] repos = bitbucketDetails.getRepos();
+		Repos[] repos = bitbucketJsonBean.getRepos();
 		for(Repos r : repos){
 			reposMap.put(r.getId(), r.getName());
 		}
@@ -123,7 +123,7 @@ public class CiscoMuleProjectController {
 	
 	
 	@RequestMapping(value={"/bitbucket/formprocess"}, method = RequestMethod.POST)
-	public String bitbucketFormProcess(@Validated @ModelAttribute BitbucketDetails details, BindingResult result){
+	public String bitbucketFormProcess(@Validated @ModelAttribute BitbucketBean details, BindingResult result){
 		
 		//model.addAttribute("success", "sucess");
 		

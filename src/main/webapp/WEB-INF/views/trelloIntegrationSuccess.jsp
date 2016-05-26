@@ -7,6 +7,7 @@
 <title>Trello Integration Success</title>
 </head>
 <body>
-	Trello Integration Success...
+	Trello Integration With Prefs...<br>
+	${jsonData }
 </body>
 </html>

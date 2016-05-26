@@ -3,15 +3,15 @@ package com.cisco.integrations.model;
 import com.cisco.integrations.model.CommonBean;
 
 public class TrelloAppBean  extends CommonBean{
-	private String[] boardId;
+	private String boardId;
 	private String[] boardsAndListNotifications;
 	private String[] cardsNotifications;
 	private String[] checkLists;
-	
-	public String[] getBoardId() {
+
+	public String getBoardId() {
 		return boardId;
 	}
-	public void setBoardId(String[] boardId) {
+	public void setBoardId(String boardId) {
 		this.boardId = boardId;
 	}
 	public String[] getBoardsAndListNotifications() {

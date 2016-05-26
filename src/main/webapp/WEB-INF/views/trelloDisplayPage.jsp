@@ -15,10 +15,10 @@
 	<label>Trello Boards :</label> 
 	<form:select path="boardId">
 		<form:option value="NONE"  label="Select Board"/>
-   <form:options items="${boards}" />
-	</form:select>
-	Notifications : Boards&List
-	<form:checkboxes items="${notifications }" path="boardsAndListNotifications"/>
+	    <form:options items="${boards}"  />
+	</form:select><br>
+	<b>Notifications : Boards&List</b><br/>
+	<form:checkboxes items="${boardNotifications }" path="boardsAndListNotifications"/><br>
 <input type="submit" value="Integrate"/>
 </form:form>
 </body>

@@ -29,6 +29,8 @@ public class JiraAppController {
 		model.addAttribute("jiraAppBean",jiraAppBean);
 		Map<String, String> roomsMap = new LinkedHashMap<String,String>();
 		Map<String, String> projectsMap = new LinkedHashMap<String, String>();
+		Map<String, String> notificationsFromMap = new LinkedHashMap<String, String>();
+		Map<String, String> notificationsToMap = new LinkedHashMap<String, String>();
 
 		roomsMap.put("room01", "Room 01");
 		roomsMap.put("room02", "Room 02");
@@ -37,8 +39,15 @@ public class JiraAppController {
 		projectsMap.put("project01", "Project 01");
 		projectsMap.put("project02", "Project 02");
 		projectsMap.put("project03", "Project 03");
+		notificationsFromMap.put("open", "open");
+		notificationsFromMap.put("fixed", "Fixed");
+		notificationsFromMap.put("RTT", "Readt To Test");
+		notificationsToMap.put("fixed", "Fixed");
+		notificationsToMap.put("RTT", "Readt To Test");
+		notificationsToMap.put("closed", "Closed");
 		
-
+		model.addAttribute("notificationsFromList",notificationsFromMap);
+		model.addAttribute("notificationsToList",notificationsToMap);
 		model.addAttribute("roomsList",roomsMap);
 		model.addAttribute("projectsList",projectsMap);
 

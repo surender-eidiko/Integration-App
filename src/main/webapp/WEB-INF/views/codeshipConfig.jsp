@@ -7,18 +7,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Trello Integration with Spark</title>
+<title>Codeship Config</title>
 </head>
 <body>
-<h3>Trello Integration</h3>
-<form:form method="POST" commandName="trelloAppBean" action="saveconfig">
-	<label>Trello Boards :</label> 
-	<form:select path="boardId">
-		<form:option value="NONE"  label="Select Board"/>
-	    <form:options items="${boards}"  />
+<form:form method="POST" commandName="codeshipAppBean" action="formprocess">
+<h2>Codeship Integration</h2>
+	<b>Projects :</b>&nbsp;&nbsp;
+	<form:select path="projects">
+		<form:option value="NONE"  label="Select Project"/>
+	    <form:options items="${projects}"  />
 	</form:select><br>
-	<b>Notifications : Boards&List</b><br/>
-	<form:checkboxes items="${boardNotifications }" path="boardsAndListNotifications"/><br>
+
+	<h2>Spark Configuration</h2>
+		Room : 
+		<form:select path="roomId">
+			<form:option value="NONE" label="--- Select ---" />
+			<form:options items="${roomsList}" />
+		</form:select>
+		<br/><br/>
+		Display Name:
+		<form:input path="displayName" />
+		<br />
 <input type="submit" value="Integrate"/>
 </form:form>
 </body>

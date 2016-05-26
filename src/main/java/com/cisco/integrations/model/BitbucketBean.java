@@ -1,21 +1,36 @@
 package com.cisco.integrations.model;
 
-public class BitbucketBean {
+public class BitbucketBean extends CommonBean{
 	
-	private String room;
-	private String repo;
+private String channelName;
 	
-	public String getRoom() {
-		return room;
+	private String webhookURL;
+	
+	private String description;
+
+	public String getChannelName() {
+		return channelName;
 	}
-	public void setRoom(String room) {
-		this.room = room;
+
+	public void setChannelName(String channelName) {
+		this.channelName = channelName;
 	}
-	public String getRepo() {
-		return repo;
+
+	public String getWebhookURL() {
+		return webhookURL;
 	}
-	public void setRepo(String repo) {
-		this.repo = repo;
+
+	public void setWebhookURL(String webhookURL) {
+		this.webhookURL = webhookURL;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	
 }

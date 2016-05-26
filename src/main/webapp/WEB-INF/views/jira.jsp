@@ -11,26 +11,14 @@
 </head>
 <body>
 
-	<form:form method="POST" commandName="jiraAppBean" action="formprocess">
+	<form:form method="POST" commandName="jiraAppBean" action="saveconfig">
 		<h2>JIRA Configuration</h2>
 		Repository :
 		<form:select path="projectId">
 			<form:option value="NONE" label="--- Select ---" />
 			<form:options items="${projectsList}" />
 		</form:select>
-		<h4>Notifications:</h4>
-		From: 
-		<form:select path="notifications[0].fromStage">
-			<form:option value="NONE" label="--- Select ---" />
-			<form:options items="${notificationsFromList}" />
-		</form:select>&nbsp;&nbsp;
-		To:<form:select path="notifications[0].toStage">
-			<form:option value="NONE" label="--- Select ---" />
-			<form:options items="${notificationsToList}" />
-		</form:select>
-		
-		<br/><br/>
-		
+
 		<h2>Spark Configuration</h2>
 		Room : 
 		<form:select path="roomId">
@@ -40,7 +28,8 @@
 		<br/><br/>
 		Display Name:
 		<form:input path="displayName" />
-		<br/><br/>
+		<br />
+		<br />
 		<input type="submit" value="Integrate" />
 	</form:form>
 </body>

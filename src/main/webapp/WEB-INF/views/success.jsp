@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Trello Integration Success</title>
+<title>Integration Success</title>
 </head>
 <body>
-	Trello Integration With Prefs...<br>
-	${jsonData }
+<br/>${jsonData}
 </body>
 </html>

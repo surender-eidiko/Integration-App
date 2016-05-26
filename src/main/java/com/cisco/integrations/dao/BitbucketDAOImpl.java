@@ -3,7 +3,7 @@ package com.cisco.integrations.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import com.cisco.integrations.model.BitbucketDetails;
+import com.cisco.integrations.model.BitbucketBean;
 
 public class BitbucketDAOImpl implements BitbucketDAO{
 	
@@ -18,9 +18,9 @@ public class BitbucketDAOImpl implements BitbucketDAO{
 	}
 
 	@Override
-	public void addBitBucketDetails(BitbucketDetails bitbucketDetails) {
+	public void addBitBucketDetails(BitbucketBean bitbucketBean) {
 		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(bitbucketDetails);
+		session.persist(bitbucketBean);
 	}
 
 	

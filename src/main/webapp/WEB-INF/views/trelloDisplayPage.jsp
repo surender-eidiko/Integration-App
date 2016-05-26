@@ -10,32 +10,15 @@
 <title>Trello Integration with Spark</title>
 </head>
 <body>
-<h2>Trello Integration</h2>
-<form:form method="POST" commandName="trelloAppBean" action="formprocess">
+<h3>Trello Integration</h3>
+<form:form method="POST" commandName="trelloAppBean" action="saveconfig">
 	<label>Trello Boards :</label> 
 	<form:select path="boardId">
 		<form:option value="NONE"  label="Select Board"/>
 	    <form:options items="${boards}"  />
 	</form:select><br>
-	<b>Notifications :&nbsp; Boards&List</b><br/>
-	<form:checkboxes items="${boardNotifications }" path="boardsAndListNotifications"/><br><br>
-	
-	<b>Notifications : &nbsp;Cards</b><br/>
-	<form:checkboxes items="${cardNotifications }" path="cardsNotifications"/><br><br>
-	
-	<b>Notifications : &nbsp;CheckLists</b><br/>
-	<form:checkboxes items="${checklistNotifications }" path="checkLists"/><br><br>
-	
-	<h2>Spark Configuration</h2>
-		Room : 
-		<form:select path="roomId">
-			<form:option value="NONE" label="--- Select ---" />
-			<form:options items="${roomsList}" />
-		</form:select>
-		<br/><br/>
-		Display Name:
-		<form:input path="displayName" />
-		<br />
+	<b>Notifications : Boards&List</b><br/>
+	<form:checkboxes items="${boardNotifications }" path="boardsAndListNotifications"/><br>
 <input type="submit" value="Integrate"/>
 </form:form>
 </body>

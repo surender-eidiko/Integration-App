@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,7 +21,7 @@ import com.google.gson.Gson;
 public class JiraAppController {
 	
 	
-	@RequestMapping(value="/jira/page")
+	@RequestMapping(value="/jira/config")
 	public String bitbucketPage(Model model, HttpServletRequest request){
 
 		JiraAppBean jiraAppBean = new JiraAppBean();
@@ -28,8 +29,6 @@ public class JiraAppController {
 		model.addAttribute("jiraAppBean",jiraAppBean);
 		Map<String, String> roomsMap = new LinkedHashMap<String,String>();
 		Map<String, String> projectsMap = new LinkedHashMap<String, String>();
-		Map<String, String> notificationsFromMap = new LinkedHashMap<String, String>();
-		Map<String, String> notificationsToMap = new LinkedHashMap<String, String>();
 
 		roomsMap.put("room01", "Room 01");
 		roomsMap.put("room02", "Room 02");
@@ -39,29 +38,21 @@ public class JiraAppController {
 		projectsMap.put("project02", "Project 02");
 		projectsMap.put("project03", "Project 03");
 		
-		notificationsFromMap.put("open", "open");
-		notificationsFromMap.put("fixed", "Fixed");
-		notificationsFromMap.put("RTT", "Readt To Test");
-		notificationsToMap.put("fixed", "Fixed");
-		notificationsToMap.put("RTT", "Readt To Test");
-		notificationsToMap.put("closed", "Closed");
-		
-		model.addAttribute("notificationsFromList",notificationsFromMap);
-		model.addAttribute("notificationsToList",notificationsToMap);
+
 		model.addAttribute("roomsList",roomsMap);
 		model.addAttribute("projectsList",projectsMap);
 
 		return "jira";
 	}
 	
-	@RequestMapping(value={"/jira/formprocess"}, method = RequestMethod.POST)
-	public String bitbucketFormProcess(Model model,@Validated @ModelAttribute JiraAppBean jiraAppBean, BindingResult result){
+	@RequestMapping(value={"/jira/saveconfig"}, method = RequestMethod.POST)
+	public String bitbucketFormProcess(Model model, @Validated @ModelAttribute JiraAppBean jiraAppBean, BindingResult result){
 		
 		String jiraIntegrationData = new Gson().toJson(jiraAppBean);
-		model.addAttribute("jiraIntegrationData", jiraIntegrationData);
-		model.addAttribute("jiraAppBean", jiraAppBean);
+		model.addAttribute("jsonData", jiraIntegrationData);
 		
-		return "jiraIntegrationSucess";
+		
+		return "success";
 	}
 
 }

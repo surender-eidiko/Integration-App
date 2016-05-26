@@ -4,7 +4,6 @@
 <html>
 <jsp:include page="WEB-INF/views/header.jsp"></jsp:include>
 <body>
-
 Cisco Mule Project
 </body>
 </html>

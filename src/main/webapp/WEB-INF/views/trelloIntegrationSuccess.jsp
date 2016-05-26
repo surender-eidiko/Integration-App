@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>PagerDuty Success</title>
+<title>Trello Integration Success</title>
 </head>
 <body>
-Result :
-
-${jsonData}
+	Trello Integration Success...
 </body>
 </html>

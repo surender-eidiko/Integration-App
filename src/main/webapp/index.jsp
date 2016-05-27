@@ -9,7 +9,8 @@
 <a href='<c:url value="/pagerduty/config"/>'>Configure PagerDuty</a><br>
 <a href="<c:url value="/bitbucket/config"/>">Configure Bitbucket</a><br>
 <a href="<c:url value="/jira/config"/>">Configure JIIRA</a><br>
-<a href="<c:url value="/trello/config"/>">Configure Trello</a><br>
+<a href="<c:url value="/trello/home"/>">Configure Trello</a><br>
+<%-- <a href="<c:url value="/trello/config"/>">Configure Trello</a><br> --%>
 <a href="<c:url value="/codeship/config"/>">Configure Codeship</a><br>
 </body>
 </html>

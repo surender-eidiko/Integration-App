@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Trello Integration with Spark</title>
 </head>
-<body>
+<body >
 <h3>Trello Integration</h3>
 <form:form method="POST" commandName="trelloAppBean" action="saveconfig">
 	<label>Trello Boards :</label> 
@@ -40,4 +40,5 @@
 <input type="submit" value="Integrate"/>
 </form:form>
 </body>
+
 </html>

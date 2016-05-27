@@ -6,13 +6,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<form:form method="POST" commandName="pagerdutyBean" action="saveconfig">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form:form method="POST" commandName="formBean" action="saveconfig">
 <h3>Integration Settings</h3>
-<h4>Incidents to monitor</h4>
-
-<h5>Choose the incidents you'd like to receive events for.</h5>
-
-<form:checkboxes items="${incidents }" path="incidents"/>
 
 <h3>Post to channel</h3>
 <h5>Which channel should we post events to?</h5>
@@ -23,15 +22,16 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <br/><br/>
 
-Webhook URL
-<form:input path="webhookURL" value="${webhookURL }"/>
+<h3>Token</h3>
+This token is used as the key to your Jenkins CI integration.
+<form:input path="token" value="${token}"/>
 <br><br>
 <h3>Descriptive Label</h3>
 <h5>Use this label to provide extra context in your list of integrations (optional).</h5>
-<form:input path="description" value="${description }"/>
+<form:input path="description" value="${description}"/>
 <br><br>
 Customize Name
-<form:input path="displayName" value="pagerduty"/>
+<form:input path="displayName" value="${name}"/>
 <br><br>
 Customize Icon
 <input type="button" value="Upload Image"/>&nbsp;&nbsp;or&nbsp;&nbsp;<input type="button" value="Choose an emoji">
@@ -39,5 +39,4 @@ Customize Icon
 <input type="submit" value="Save Integration"/>
 </form:form>
 </body>
-
-
+</html>

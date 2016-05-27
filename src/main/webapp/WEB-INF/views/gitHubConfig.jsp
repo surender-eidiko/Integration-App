@@ -7,17 +7,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Codeship Config</title>
+<title>GitHub Integration with Spark</title>
 </head>
 <body>
-<form:form method="POST" commandName="codeshipAppBean" action="saveconfig">
-<h2>Codeship Integration</h2>
-	<b>Projects :</b>&nbsp;&nbsp;
-	<form:select path="projects">
-		<form:option value="NONE"  label="Select Project"/>
-	    <form:options items="${projects}"  />
+<h3>GitHub Integration</h3>
+<form:form method="POST" commandName="gitAppBean" action="saveconfig">
+	<b>Repositories :</b>  
+	<form:select path="repositories">
+		<form:option value="NONE"  label="Select Repository"/>
+	    <form:options items="${repos}"  />
 	</form:select><br>
-
+	
+	<b>Events :</b><br><br>
+	COMMIT EVENTS<br/>
+	 <form:checkboxes items="${commitEvents }" path="commitEvents"/><br><br> 
+	
+	ISSUE / PULL REQUEST EVENTS <br/>
+	<form:checkboxes items="${issueOrPullReqEvents }" path="issueOrPullReqEvents"/><br><br>
+	
+	DEPLOY EVENTS<br/>
+	<form:checkbox path="deployEvents" value="deploymentstatus"/>Show deployment statuses<br/><br/>
+	
+	OTHER EVENTS<br/>
+	<form:checkboxes items="${otherEvents }" path="otherEvents"/><br><br>
+	
 	<h2>Spark Configuration</h2>
 		Room : 
 		<form:select path="roomId">
@@ -31,4 +44,4 @@
 <input type="submit" value="Integrate"/>
 </form:form>
 </body>
-</html>
+</html></html>

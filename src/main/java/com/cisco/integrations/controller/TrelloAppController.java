@@ -40,7 +40,7 @@ public class TrelloAppController {
 		try {
 			OAuthClientRequest request1 = OAuthClientRequest
 					.authorizationLocation(
-							"https://trello.com/1/authorize?expiration=never&scope=read,write,account&response_type=token&name=Server%20Token&key=ab7870583126b41b7c4b83710f5d5878&return_url=http://localhost:8080/CiscoMuleProject/trello/callback")
+							"https://trello.com/1/authorize?expiration=never&scope=read,write,account&response_type=token&name=Cisco%20Spark&key=ab7870583126b41b7c4b83710f5d5878&return_url=http://localhost:8080/CiscoMuleProject/trello/callback")
 					.buildQueryMessage();
 			String req = request1.getLocationUri();
 			model.addAttribute("redirectURL", req);
@@ -58,7 +58,7 @@ public class TrelloAppController {
 			
 		System.out.println(request.getRequestURL().toString()+" "+request.getQueryString()) ;
 		System.out.println(request.getRequestURI().toString()+" "+request.getPathInfo());*/
-		return "accessToken";
+		return "trelloAccessToken";
 	}
 	@RequestMapping(value = "/trello/config")
 	public String displayForm(Model model) {
@@ -95,9 +95,16 @@ public class TrelloAppController {
 		model.addAttribute("checklistNotifications", checklistNotifications);
 		model.addAttribute("roomsList", roomsMap);
 		model.addAttribute("boards", boards);
+		
 		return "trelloConfig";
 	}
-
+	@RequestMapping(value="/trello/editconfig")
+	public String editConfig(Model model){
+		String jsonData = "{\"boardId\":\"board3\",\"roomId\":\"room1\",\"displayName\":\"trello\",\"checkLists\":[\"Card Created\",\"Card Renamed\"],\"cardsNotifications\":[\"Card Created\",\"Comment Added to Card\"],\"boardsAndListNotifications\":[\"List Created\",\"Board renamed\"]}";
+		TrelloAppBean trelloAppBean = new Gson().fromJson(jsonData, TrelloAppBean.class);
+		model.addAttribute("trelloAppBean",trelloAppBean);
+		return "trelloConfig";
+	}
 	@RequestMapping(value = "/trello/saveconfig")
 	public String displayTrelloPage(@Valid TrelloAppBean trelloAppBean, BindingResult result, Model model) {
 		JSONObject jsonObject = new JSONObject(trelloAppBean);

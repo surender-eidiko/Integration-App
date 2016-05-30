@@ -10,9 +10,8 @@
 <title>Trello Integration</title>
 </head>
 <body>
-	<div>
-		<div style="widows: 40%;margin-left: 200px"><img src='<c:url value="/images/trello.png"></c:url>' alt="Trello Icon" width="40" width="35"/></div>
-		
+	<div><h2 style="">Integrations</h2><br/><br/>
+		<div style="widows: 40%;margin-left: 200px"><img src='<c:url value="/images/trello.png"></c:url>' alt="Trello Icon" width="80" width="50"/></div>
 		<div style="width: 60%;float: right">
 			Trello is a project management tool that uses boards to keep your team organized.
 			<br/>
@@ -23,6 +22,12 @@ to a card or a card moved.
 <form:form action="code">
 	<input type="submit" value="Add">
 </form:form>
+		</div>
+		<div>
+			<% if(true){ %>
+			<div style="width: 60%;float: right">
+				<p style="float: left;overflow: hidden;"><b>Trello Integration1 </b></p><p style="float: right;margin-right: 50px;"><a href='<c:url value="config"></c:url>'>Edit Configuration</a></p>
+			</div>	<% } %>	
 		</div>
 	</div>
 </body>

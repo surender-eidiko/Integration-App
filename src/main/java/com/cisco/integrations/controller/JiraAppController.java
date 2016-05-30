@@ -59,8 +59,6 @@ public class JiraAppController {
 		
 		String jiraIntegrationData = new Gson().toJson(jiraAppBean);
 		model.addAttribute("jsonData", jiraIntegrationData);
-		
-		
 		return "success";
 	}
 

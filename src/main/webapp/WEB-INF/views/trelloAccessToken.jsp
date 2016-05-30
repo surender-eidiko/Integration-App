@@ -6,9 +6,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>trello access token page</title>
 </head>
-<body >
-Access Token : ${accessToken }
+<body onload="javascript:invoke();">
+Access Token :<p id="token"></p> 
+<%-- <% 
+	String at = "<script>document.writeln(url)</script>";
+	out.println(at);
+%> --%>
 </body>
+<script>
+function invoke(){
+	var url = window.location.hash;
+	var token = url.slice(7);
+	document.getElementById("token").innerHTML  = token;
+	//alert(token.length);
+	//alert(url);
+} 
+</script>
 </html>

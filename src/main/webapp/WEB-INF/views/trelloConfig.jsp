@@ -9,8 +9,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Trello Integration with Spark</title>
 </head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("form").submit(function(){
+			
+		});
+	});
+	
+</script>
 <body >
 <h3>Trello Integration</h3>
+<div id="loading" style="display: none;"></div>
 <form:form method="POST" commandName="trelloAppBean" action="saveconfig">
 	<label>Trello Boards :</label> 
 	<form:select path="boardId">
@@ -36,9 +46,12 @@
 		<br/><br/>
 		Display Name:
 		<form:input path="displayName" />
-		<br />
+		<br/>
+		Customize Icon :
+		<input type="button" value="Upload Image"/><br/><br/>
 <input type="submit" value="Integrate"/>
 </form:form>
+
 </body>
 
 </html>
